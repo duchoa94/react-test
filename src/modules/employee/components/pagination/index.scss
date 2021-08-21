@@ -1,0 +1,46 @@
+.pagination {
+  display: flex;
+  justify-content: flex-end;
+
+  li {
+    display: inline-block;
+    cursor: pointer;
+  }
+
+  .disabled {
+    cursor: not-allowed;
+  }
+
+  .btn-previous, .btn-next {
+    margin: 0px 5px;
+    line-height: 26px;
+    font-size: 13px;
+    height: 27px;
+    text-align: center;
+    &:hover {
+      color: #0a8ff0;
+    }
+  }
+
+  .pagination-item {
+    margin: 0px 5px;
+    line-height: 26px;
+    font-size: 13px;
+    width: 27px;
+    height: 27px;
+    text-align: center;
+
+    &.active {
+      background-color: #0a8ff0;
+      color: white;
+      border-radius: 50%;
+      &:hover {
+        color: white;
+      }
+    }
+
+    &:hover {
+      color: #0a8ff0;
+    }
+  }
+}

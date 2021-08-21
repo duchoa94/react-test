@@ -26,12 +26,12 @@ export const employeeSlice = createSlice({
 export const { fetchEmployeesRequest, fetchEmployeesSuccess, fetchEmployeesFailed } = employeeSlice.actions
 
 export const fetchEmployees = () => async (dispatch: any) => {
-  dispatch(fetchEmployeesRequest);
+  dispatch(fetchEmployeesRequest(null));
   try {
     const response = await client.get('/employee');
     dispatch(fetchEmployeesSuccess(response));
   } catch (err) {
-    dispatch(fetchEmployeesFailed(err));
+    dispatch(fetchEmployeesFailed(err.message));
   }
 };
 
