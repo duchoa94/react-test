@@ -6,12 +6,11 @@ interface PaginationProps {
   pageSize: number,
   totalItems: number,
   onPageChange: (page: number) => void,
-  pageLimit: number,
   pageNeighbours: number,
 }
 
 const Pagination = (props: PaginationProps) => {
-  const { totalItems, pageSize, currentPage, onPageChange, pageLimit, pageNeighbours } = props;
+  const { totalItems, pageSize, currentPage, onPageChange, pageNeighbours } = props;
   const [pageGroup, setPageGroup] = useState<any[]>();
   const [totalPages, setTotalPages] = useState<number>(0);
 

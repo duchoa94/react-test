@@ -82,7 +82,7 @@ const EmployeePage = () => {
           </tbody>
         </table>
 
-        <Pagination currentPage={pagination.currentPage} pageSize={pagination.pageSize} pageLimit={5} pageNeighbours={2}
+        <Pagination currentPage={pagination.currentPage} pageSize={pagination.pageSize} pageNeighbours={2}
           totalItems={pagination.totalItems} onPageChange={(pageNumber) => onPageChange(pageNumber)} />
       </div>
     </div>
