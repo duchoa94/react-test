@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import './index.scss';
 
 interface PaginationProps {
@@ -16,32 +16,7 @@ const Pagination = (props: PaginationProps) => {
 
   const THREE_DOTS = 'THREE_DOTS';
 
-  useEffect(() => {
-    const totalPage = Math.ceil(totalItems / pageSize);
-    setTotalPages(totalPage)
-    getPageNumbers(totalPage);
-
-  }, [totalItems, pageSize, currentPage]);
-
-
-  const onChangePage = (page: number) => {
-    if (page > totalPages || page < 1) return;
-    onPageChange(page);
-  }
-
-  const range = (from: number, to: number, step = 1) => {
-    let index = from;
-    const range = [];
-
-    while (index <= to) {
-      range.push(index);
-      index += step;
-    }
-
-    return range;
-  }
-
-  const getPageNumbers = (totalPages: number) => {
+  const getPageNumbers = useCallback((totalPages: number) => {
     let pageRange: any[] = [];
 
     const totalPageNumbers = (pageNeighbours * 2) + 3;
@@ -84,6 +59,30 @@ const Pagination = (props: PaginationProps) => {
     pageRange = range(1, totalPages);
     setPageGroup(pageRange);
     return;
+  }, [currentPage, pageNeighbours]);
+
+  useEffect(() => {
+    const totalPageCount = Math.ceil(totalItems / pageSize);
+    setTotalPages(totalPageCount);
+    getPageNumbers(totalPageCount);
+  }, [totalItems, pageSize, currentPage, getPageNumbers]);
+
+
+  const onChangePage = (page: number) => {
+    if (page > totalPages || page < 1) return;
+    onPageChange(page);
+  }
+
+  const range = (from: number, to: number, step = 1) => {
+    let index = from;
+    const range = [];
+
+    while (index <= to) {
+      range.push(index);
+      index += step;
+    }
+
+    return range;
   }
 
   const goToPage = (page: number) => {

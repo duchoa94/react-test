@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { fetchEmployees } from './employee.slice';
 import './index.scss';
@@ -35,7 +35,7 @@ const EmployeePage = () => {
     dispatch(fetchEmployees());
   }, [dispatch]);
 
-  useEffect(() => {
+  const fetchDisplayEmployees = useCallback(() => {
     if (totalEmployees && totalEmployees.length) {
       setPagination(prevState => ({
         ...prevState,
@@ -46,7 +46,11 @@ const EmployeePage = () => {
       const displayEmployees = totalEmployees.slice(start, start + pagination.pageSize);
       setDisplayEmployees(displayEmployees);
     }
-  }, [totalEmployees]);
+  },[totalEmployees, pagination.currentPage, pagination.pageSize]);
+
+  useEffect(() => {
+    fetchDisplayEmployees();
+  }, [fetchDisplayEmployees]);
 
   const onPageChange = (pageNumber: number) => {
     setPagination(prevState => ({
