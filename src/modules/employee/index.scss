@@ -1,22 +1,99 @@
 .employee-page {
   padding: 40px;
 
+  .header {
+    display: flex;
+    width: 80%;
+    justify-content: space-between;
+
+    .btn-add-user {
+      cursor: pointer;
+      margin-left: 20px;
+      height: 35px;
+      background-color: #0a8ff0;
+      color: white;
+      border: 1px solid;
+      border-radius: 4px;
+      margin-top: 6px;
+      padding: 0 10px;
+      font-weight: bold;
+  
+      &:hover {
+        background-color: #0a3cf0;
+      }
+    }
+  }
+
   .content {
     width: 80%;
+
+    .input-user {
+      height: 25px;
+      width: 80%;
+    }
+
+    .btn-save {
+      width: 80px;
+      color: white;
+      border: 1px solid;
+      border-radius: 4px;
+      padding: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      background-color: #0a8ff0;
+      &:disabled {
+        background: gray;
+        cursor: not-allowed;
+      }
+    }
+
+    .btn-cancel {
+      width: 80px;
+      color: white;
+      background: gray;
+      border: 1px solid;
+      padding: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      border-radius: 4px;
+      margin-left: 8px;
+    }
+
+    .btn-delete {
+      width: 80px;
+      color: white;
+      background: #bd0431;
+      border: 1px solid;
+      padding: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 4px;
+      margin-left: 8px;
+    }
   }
 
   table {
     width: 100%;
-  };
+  }
+
+  ;
+
   th {
     font-weight: bold;
   }
-  table, th, td {
+
+  table,
+  th,
+  td {
     border: 1px solid black;
     border-collapse: collapse;
   }
-  th, td {
+
+  th,
+  td {
     padding: 15px;
     text-align: left;
   }
-};
+}
+
+;
