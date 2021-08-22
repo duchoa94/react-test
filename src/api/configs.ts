@@ -1,5 +1,5 @@
 const configs = {
-  apiURL: "https://611d44967d273a0017e2f76e.mockapi.io/api"
+  apiURL: "https://retoolapi.dev/EMrZx2"
 }
 
 export default configs
